@@ -1,0 +1,4 @@
+export const GET_CARD = "GET_CARD";
+export const GET_CARD_REQUESTED = "GET_CARD_REQUESTED";
+export const GET_CARD_BY_ID = "GET_CARD_BY_ID";
+export const GET_CARD_BY_ID_REQUESTED = "GET_CARD_BY_ID_REQUESTED";

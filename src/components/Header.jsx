@@ -10,8 +10,8 @@ const Header = () => {
                     <p className="opacity-5">Магазин лучших кроссовок</p>
                 </div>
             </div>
-            <ul className="d-flex">
-                <li className="mr-30">
+            <ul className="d-flex align-center">
+                <li className="d-flex align-center mr-30">
                     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                          width="18.000000pt" height="18.000000pt" viewBox="0 0 512.000000 512.000000"
                          preserveAspectRatio="xMidYMid meet">
@@ -37,9 +37,9 @@ c-169 627 -252 923 -265 944 -33 50 -57 53 -425 53 l-340 0 0 -120z m4835
 163 35 51 -3 86 -12 122 -30z"/>
                         </g>
                     </svg>
-                    <span>1205 руб.</span>
+                    <span className="ml-5">1331 руб.</span>
                 </li>
-                <li>
+                <li className="d-flex align-center">
                     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
                          width="18.000000pt" height="18.000000pt" viewBox="0 0 512.000000 512.000000"
                          preserveAspectRatio="xMidYMid meet">
