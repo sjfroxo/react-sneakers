@@ -1,15 +1,19 @@
-import React, {useEffect} from 'react';
-import Card from "./Card/Card";
-import {useDispatch, useSelector} from "react-redux";
-import {GET_CARD_REQUESTED} from "../actions/card";
+import React, { useEffect } from 'react';
+import Card from "../Card/Card";
+import { useDispatch, useSelector } from "react-redux";
+import { GET_CARD_REQUESTED } from "../../actions/card";
 
 const ProductsList = () => {
+
     const dispatch = useDispatch();
     const cards = useSelector((state => state.cardReducer.cards));
+
     useEffect(() => {
         dispatch({type: GET_CARD_REQUESTED})
-    },[dispatch]);
-    const renderCardList = () => cards.map((card, index) => <Card card={card} key={index} />);
+    }, [dispatch, cards]);
+
+    const renderCardList = () => cards.map((card, index) => <Card card={card} key={index}/>);
+
     return (
         <div className="content p-40">
             <div className="d-flex align-center justify-between mb-40">
@@ -32,10 +36,10 @@ const ProductsList = () => {
 43z"/>
                         </g>
                     </svg>
-                    <input placeholder="Поиск..." />
+                    <input placeholder="Поиск..."/>
                 </div>
             </div>
-            <div className="d-flex">
+            <div className="sneakersList d-flex">
                 {renderCardList()}
             </div>
         </div>

@@ -1,8 +1,10 @@
-import { GET_CARD, GET_CARD_BY_ID } from "../actions/card";
+import { SET_CART_LIST, GET_CARD, GET_CARD_BY_ID, SET_FAVORITE_LIST } from "../actions/card";
 
 const initialState = {
     cards: [],
     card: {},
+    cart: [],
+    favorite: [],
 }
 
 const cardReducer = (state = initialState, action) => {
@@ -17,6 +19,18 @@ const cardReducer = (state = initialState, action) => {
             return ({
                 ...state,
                 card: action.payload,
+            });
+
+        case SET_CART_LIST:
+            return ({
+                ...state,
+                cart: action.payload,
+            });
+
+        case SET_FAVORITE_LIST:
+            return ({
+                ...state,
+                favorite: action.payload,
             });
 
         default:

@@ -1,20 +1,25 @@
 import React from 'react';
-import { useSelector } from "react-redux";
+import './Cart.scss';
 
-const CartItem = () => {
-    const addedToCart = useSelector((state => state.cardReducer.card));
+const CartItem = ({ card, onCardDelete }) => {
+
+    const handleCardDelete = () => {
+        onCardDelete(card);
+    }
 
     return (
-        <div className="items">
+        <div className="items mr-10">
             <div className="cartItem d-flex align-center mb-20">
-                <div className="cartItemImg">
-                    <img width={82} height={70} src={`http://localhost:5000/${addedToCart.picture}`} alt={addedToCart.title}/>
+                <div className="cartItemImg mr-30">
+                    <img width={82} height={70} src={`http://localhost:5000/${card.picture}`} alt={card.title}/>
                 </div>
                 <div className="mr-20 flex">
-                    <p className="mb-5">{addedToCart.title} {addedToCart.brand} {addedToCart.model}</p>
-                    <b>{addedToCart.price}</b>
+                    <p className="mb-5">{card.title} {card.brand} {card.model}</p>
+                    <b>{`${card.price} руб.`}</b>
                 </div>
-                <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove"/>
+                <button className="button" onClick={handleCardDelete}>
+                    <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove"/>
+                </button>
             </div>
         </div>
     );
