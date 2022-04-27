@@ -7,7 +7,7 @@ import Header from './components/Header/Header';
 import Cart from './components/Cart/Cart';
 import ProductsList from "./components/Products/ProductsList";
 import ProductDetails from "./components/Products/ProductDetails";
-import Favorite from "./store/Favorite/Favorite";
+import Favorite from "./components/Favorite/Favorite";
 import { PATH } from "./constants/values";
 import './index.scss';
 
