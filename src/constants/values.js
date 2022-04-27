@@ -1,4 +1,5 @@
 export const PATH = {
+    MAIN_PAGE: "/",
     DETAILS: "/product_details/",
     FAVORITE: "/favorites/",
 }

@@ -2,8 +2,13 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import './Header.scss';
 import {PATH} from "../../constants/values";
+import { setPrice } from "../../utilites/utilites";
+import { useSelector } from "react-redux";
 
-const Header = ({openCart}) => {
+const Header = ({ openCart }) => {
+
+    const cart = useSelector((state => state.cardReducer.cart));
+
     return (
         <header className="d-flex justify-between align-center p-40">
             <div className="d-flex align-center">
@@ -43,7 +48,7 @@ const Header = ({openCart}) => {
                             </g>
                         </svg>
                     </button>
-                    <span className="ml-5">1331 руб.</span>
+                    <span className="ml-5">{`${setPrice(cart)} руб.`}</span>
                 </li>
                 <li className="d-flex align-center">
                     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"

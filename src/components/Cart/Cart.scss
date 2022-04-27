@@ -8,11 +8,6 @@
   z-index: 1;
 }
 
-.overlay body{
-  overflow: hidden;
-
-}
-
 .drawer {
   position: fixed;
   width: 30%;
@@ -94,7 +89,6 @@
 .cartItem {
   border: 1px solid #f3f3f3;
   border-radius: 20px;
-  overflow: hidden;
   padding: 20px;
 
   .cartItemImg {
@@ -127,6 +121,6 @@
 
 .cartCardList{
   margin: auto;
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 100%;
 }

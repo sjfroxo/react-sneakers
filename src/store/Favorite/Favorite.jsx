@@ -1,7 +1,9 @@
 import React from 'react';
+import { PATH } from "../../constants/values";
+import { Link } from "react-router-dom";
 import FavoriteItem from "./FavoriteItem";
 import { useDispatch, useSelector } from "react-redux";
-import { getNewFavorite } from "../../utilites/cartHandler";
+import { getNewFavorite } from "../../utilites/utilites";
 import { SET_FAVORITE_LIST } from "../../actions/card";
 
 const Favorite = () => {
@@ -15,15 +17,16 @@ const Favorite = () => {
     const dispatch = useDispatch();
 
     const handleDeleteCard = (currentCard) => {
-        const newCart = getNewFavorite(currentCard, favorite);
+        const newFavorite = getNewFavorite(currentCard, favorite);
         dispatch({
             type: SET_FAVORITE_LIST,
-            payload: newCart,
+            payload: newFavorite,
         });
     }
 
     return (
         <div className="favoriteBlock">
+            <Link to={PATH.MAIN_PAGE}>Назад</Link>
             <div className="d-flex justify-between">
                 <h2 className="d-flex">Избранное</h2>
             </div>

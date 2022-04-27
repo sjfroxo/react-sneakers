@@ -7,7 +7,7 @@ import Header from './components/Header/Header';
 import Cart from './components/Cart/Cart';
 import ProductsList from "./components/Products/ProductsList";
 import ProductDetails from "./components/Products/ProductDetails";
-import Favorite from "./components/Favorite/Favorite";
+import Favorite from "./store/Favorite/Favorite";
 import { PATH } from "./constants/values";
 import './index.scss';
 
@@ -27,7 +27,6 @@ const App = () => {
         <Route path="/" element={<ProductsList />} />
         <Route path={PATH.DETAILS} element={<ProductDetails />} />
         <Route path={PATH.FAVORITE} element={<Favorite />} />
-        {/*<Route path="invoices" element={<Invoices />} />*/}
       </Routes>
     </div>
   );

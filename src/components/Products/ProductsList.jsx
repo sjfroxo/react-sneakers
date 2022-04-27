@@ -4,15 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { GET_CARD_REQUESTED } from "../../actions/card";
 
 const ProductsList = () => {
-
     const dispatch = useDispatch();
     const cards = useSelector((state => state.cardReducer.cards));
+    const cart = useSelector((state => state.cardReducer.cart));
+    const favorite = useSelector((state => state.cardReducer.favorite));
 
     useEffect(() => {
         dispatch({type: GET_CARD_REQUESTED})
     }, [dispatch, cards]);
 
-    const renderCardList = () => cards.map((card, index) => <Card card={card} key={index}/>);
+    const checkAvailability = (list, card) => list.some(item => item._id === card._id);
+
+
+    const renderCardList = () => cards.map((card, index) => <Card card={card} key={index} isCart={checkAvailability(cart, card)} isFavorite={checkAvailability(favorite, card)}/>);
 
     return (
         <div className="content p-40">

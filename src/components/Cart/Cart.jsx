@@ -1,10 +1,10 @@
 import React from 'react';
 import CartItem from "./CartItem";
 import { useDispatch, useSelector } from "react-redux";
-import { getNewCart } from "../../utilites/cartHandler";
+import { getNewCart, setPrice } from "../../utilites/utilites";
 import { SET_CART_LIST } from "../../actions/card";
 
-const Cart = ({ openCart,  }) => {
+const Cart = ({ openCart }) => {
     const cart = useSelector((state => state.cardReducer.cart));
     const renderCardList = () => cart.map((card, index) =>
         <CartItem
@@ -35,12 +35,9 @@ const Cart = ({ openCart,  }) => {
             payload: newCart,
         });
     }
-    const setTotalPrice = (cartList) => {
-        cartList.map(card => card.price).reduce((currentCard, card) => currentCard + card, 0)
-    }
 
-// const initialValue = 0;
-//      return cartList.map(i => i.price).reduce((currentCard, cardValue) => currentCard.price + cardValue.price, initialValue);
+    const setDiscount = () => Math.round(setPrice(cart) * 5) / 100;
+    const setTotalPrice = () => setPrice(cart) - setDiscount(cart);
 
     return (
         <div className="overlay">
@@ -58,14 +55,19 @@ const Cart = ({ openCart,  }) => {
                 <div className="cartTotalBlock">
                     <ul>
                         <li>
-                            <span>Итого:</span>
+                            <span>Сумма:</span>
                             <div></div>
-                            <b>{setTotalPrice(cart)}</b>
+                            <b>{`${setPrice(cart)} руб.`}</b>
                         </li>
                         <li>
-                            <span>Налог 5%</span>
+                            <span>Скидка 5%:</span>
                             <div></div>
-                            <b>1074 руб.</b>
+                            <b>{`${setDiscount()} руб.`}</b>
+                        </li>
+                        <li>
+                            <span>Итого:</span>
+                            <div></div>
+                            <b>{`${setTotalPrice()} руб.`}</b>
                         </li>
                     </ul>
                     <button className="greenButton">Оформить заказ <img src="/img/arrow.svg" alt="Arrow"/></button>

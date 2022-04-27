@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useSelector } from "react-redux";
 import ShoeSizeButtonsList from "./ShoeSizeButtonsList";
-import { SHOE_SIZE_VALUES } from "../../constants/values";
+import { PATH, SHOE_SIZE_VALUES } from "../../constants/values";
+import { Link } from "react-router-dom";
 
 const ProductDetails = () => {
     const product = useSelector((state => state.cardReducer.card));
@@ -12,8 +13,11 @@ const ProductDetails = () => {
         setShoeSizeValue(getShoeSizeValue + e.target.value);
     }
 
+
+
     return (
         <div className="detailsBlock">
+            <Link to={PATH.MAIN_PAGE}>Назад</Link>
             <div className="d-flex justify-around align-center mb-50">
                 <div className="detailsImg d-flex justify-center">
                     <img width={400} height={377} src={`http://localhost:5000/${product.picture}`} alt={product.title}/>

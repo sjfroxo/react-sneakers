@@ -1,13 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {SET_CART_LIST, GET_CARD_BY_ID_REQUESTED, SET_FAVORITE_LIST} from "../../actions/card";
+import { SET_CART_LIST, GET_CARD_BY_ID_REQUESTED, SET_FAVORITE_LIST } from "../../actions/card";
 import { PATH } from "../../constants/values";
-import { getNewCart, getNewFavorite } from '../../utilites/cartHandler';
+import { getNewCart, getNewFavorite } from '../../utilites/utilites';
 
-const Card = ({ card }) => {
-    const [isFavorite, setFavorite] = useState(false);
-    const [isAddedToCart, setAddedToCart] = useState(false);
+const Card = ({ card, isCart, isFavorite }) => {
     const cart = useSelector((state => state.cardReducer.cart));
     const favorite = useSelector((state => state.cardReducer.favorite))
     const dispatch = useDispatch();
@@ -18,26 +16,15 @@ const Card = ({ card }) => {
             type: SET_CART_LIST,
             payload: newCart,
         });
-        setAddedToCart(!isAddedToCart);
     }
 
     const handleSetFavorite = () => {
-        const newCart = getNewFavorite(card, favorite);
+        const newFavorite = getNewFavorite(card, favorite);
         dispatch({
             type: SET_FAVORITE_LIST,
-            payload: newCart,
+            payload: newFavorite,
         });
-        setFavorite(!isFavorite);
     }
-
-    // const setButtonActive = (newCart) => {
-    //     if(newCart.map(item => item._id).includes(card._id)){
-    //
-    //     }
-    //     else {
-    //         setAddedToCart(!isAddedToCart);
-    //     }
-    // }
 
     const handleGetCard = () => {
         dispatch({
@@ -65,7 +52,7 @@ const Card = ({ card }) => {
                         }
                     </button>
                     <button className="button" onClick={handleCart}>
-                        {isAddedToCart ?
+                        {isCart ?
                             <img src="/img/btn-checked.svg" alt="Checked"/>
                             : <img src="/img/btn-plus.svg" alt="Plus"/>
                         }
